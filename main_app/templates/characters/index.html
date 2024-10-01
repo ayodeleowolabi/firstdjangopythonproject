@@ -17,21 +17,23 @@
 <section class='card-container'>
     {% for character in characters%}
     <div class='card'>
-        <div class='card-content'>
-            <div class='card-img-container'
-                <img
-                    src="{%static 'images/Dino.png' %}"
-                    alt='dino'
-                />
+        <a href="{% url 'character-detail' character.id %}">
+            <div class='card-content'>
+                <div class='card-img-container'
+                    <img
+                        src="{%static 'images/Dino.png' %}"
+                        alt='dino'
+                    />
+                </div>
+            <h2 class="card-title">{{character.name}}</h2>
+            {%if character.age < 40 %}
+            <p>{{character.name}} is {{character.description}} and {{character.age}} years old</p>
+            {% else %}
+            <p> {{character.name}} is an OG! and is {{character.age}} years old</p>
+            {% endif %}
+            <p>{{character.description}}</p>
             </div>
-        <h2 class="card-title">{{character.name}}</h2>
-         {%if character.age < 40 %}
-         <p>{{character.name}} is {{character.description}} and {{character.age}} years old</p>
-        {% else %}
-        <p> {{character.name}} is an OG! and is {{character.age}} years old</p>
-         {% endif %}
-        <p>{{character.description}}</p>
-        </div>
+        </a>
     </div>
     {% endfor %}
 </section>

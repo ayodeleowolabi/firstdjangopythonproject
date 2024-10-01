@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{%load static  %}
+{%block head%}
+<link rel="stylesheet" href="{% static 'css/characters/character-detail.css'%}" />
+{%endblock%}
+{%block content%}
+
+<section class="character-container">
+    <div class="character-img">
+        <img src="{%static 'images/People.png'%}" alt="all Characters" />
+    </div>
+    <div class="character-detail">
+        <h1>{{character.name}}</h1>
+        {% if character.age < 35 %}
+            <h2> {{character.name}} is {{character.age}} and is a younger character but dont underestimate them!
+        {%else%}
+                <h2> {{character.name}} is an OG character! </h2>
+        {% endif %}
+        <p>{{character.description}}</p>
+    </div>
+</section>
+{% endblock %}
+            

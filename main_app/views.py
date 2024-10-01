@@ -1,21 +1,7 @@
 from django.shortcuts import render
-from django.shortcuts import HttpResponse
+from .models import Character
 
 
-class Character:
-    def __init__(self, name, description, age):
-        self.name = name,
-        self.description = description,
-        self.age = age
-        
-characters = [
-    Character('Mario', 'Red and blue', 47),
-    Character('Luigi', 'Green', 43),
-    Character('Princess Peach', 'Pink', 23),
-    Character('Toad', 'Blue and Brown', 34),
-    Character('Bowser', 'Brown', 47),
-    Character('Donkey', 'Brown', 17)
-    ]
 
 
 # Import HttpResponse to send text-based responses
@@ -29,4 +15,9 @@ def about(request):
     return render(request, 'about.html')
 
 def character_index(request):
-    return render(request,'characters/index.html', {'characters':characters})
+    characters = Character.objects.all()
+    return render(request, 'characters/index.html', {'characters': characters})
+
+def character_detail(request, character_id):
+    character = Character.objects.get(id=character_id)
+    return render(request, 'characters/detail.html', {'character': character})
