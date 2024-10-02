@@ -17,6 +17,10 @@
                 <h2> {{character.name}} is an OG character! </h2>
         {% endif %}
         <p>{{character.description}}</p>
+        <div class='character-actions'>
+            <a href="{% url 'character-update' character.id%}" class="btn warn">Edit</a>
+            <a href="{% url 'character-delete' character.id%}" class="btn danger">Delete</a>
+        </div>
     </div>
 </section>
 {% endblock %}
