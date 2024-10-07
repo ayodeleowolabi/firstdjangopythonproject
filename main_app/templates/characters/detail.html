@@ -23,5 +23,61 @@
         </div>
     </div>
 </section>
-{% endblock %}
+
+
+<!-- Existing cat-container above -->
+<div class="gamesession-container">
+  <section class="gamesession">
+    <div class="subsection-title">
+      <h2>Game Session</h2>
+      <img
+      src="{% static 'images/People.png' %}"
+      alt="Mario Characters"
+      />
+      <img src="{% static 'images/dino.png' %}" alt="dino" />
+      <img
+      src="{% static 'images/donkey.png' %}"
+      alt="donkey"
+      />
+    </div>
+
+    <h3>Add a Game Session</h3> 
+    <form 
+      method="post" 
+      class="subsection-content" 
+      autocomplete="off"
+      action="{% url 'add-gamesession' character.id %}">
+      {% csrf_token %%}
+      {{gamesession_form.as_p}}
+      <button type="submit" class="btn submit"> Add Game Session</button>
+    </form>
+<h3> Past Feedings</h3>
+{% if character.gamesession_set.all.count%}
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>PowerUp</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for gamesession in character.gamesession_set.all %}
+        <tr>
+          <td>{{gamesession.date}}</td>
+          <td>{{gamesession.get_power_up_display}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {%else%}
+      <div class="subsection-content">
+        <p>{{character.name}} has no game sessions </p>
+
+      </div>
+      {%endif%}
+    </section>
+  </div>
+  
+  {% endblock %}
+
             
