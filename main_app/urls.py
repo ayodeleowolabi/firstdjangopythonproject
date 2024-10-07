@@ -15,5 +15,9 @@ urlpatterns = [
     path('characters/create/', views.CharacterCreate.as_view(), name='character-create'), 
     path('character/<int:pk>/update/', views.CharacterUpdate.as_view(), name='character-update'),
     path('characters/<int:pk>/delete/', views.CharacterDelete.as_view(), name='character-delete'),
-    
+    path('location/create/', views.LocationCreate.as_view(), name='location-create'),
+    path('location/<int:pk>/', views.LocationDetail.as_view(), name='location-detail'),
+    path('location/', views.LocationList.as_view(), name='location-index'),
+    path('location/<int:pk>/update/', views.LocationUpdate.as_view(), name='location-update'),
+    path('location/<int:pk>/delete/', views.LocationDelete.as_view(), name='location-delete'),
     ]

@@ -1,5 +1,5 @@
 from django import forms
-from .models import GameSession
+from .models import GameSession, Location
 
 class GameSessionForm(forms.ModelForm):
     class Meta:

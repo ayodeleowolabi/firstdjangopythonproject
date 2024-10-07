@@ -34,6 +34,15 @@ class GameSession(models.Model):
     
     class Meta:
         ordering = ['-date']
+        
+
+class Location(models.Model):
+    name = models.CharField(max_length=50)
+    challenge_level = models.CharField(max_length=20)
+    def __str__(self):
+            return self.name
+    def get_absolute_url(self):
+        return reverse("location-detail", kwargs={"pk": self.pk})
     
     
 

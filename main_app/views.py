@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Character
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .forms import GameSessionForm
+from django.views.generic import ListView, DetailView
+from .forms import GameSessionForm, Location
 
 
 
@@ -44,3 +45,22 @@ class CharacterUpdate(UpdateView):
 class CharacterDelete(DeleteView):
     model = Character
     success_url='/characters/'
+    
+class LocationCreate(CreateView):
+    model = Location
+    fields = '__all__'
+
+class LocationList(ListView):
+    model = Location
+
+class LocationDetail(DetailView):
+    model = Location
+    
+    
+class LocationUpdate(UpdateView):
+    model = Location
+    fields = ['name', 'challenge_level']
+    
+class LocationDelete(DeleteView):
+    model = Location
+    success_url = '/location/'
